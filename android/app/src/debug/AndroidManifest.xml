@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permission for Internet access -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Application tag where you should place the enableOnBackInvokedCallback attribute -->
+    <application
+        android:enableOnBackInvokedCallback="true"
+        ...>
+        <!-- Other app configurations go here -->
+    </application>
+</manifest>
