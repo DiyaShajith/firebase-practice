@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_with_firebase/registerform/registeradd.dart';
 
 class Registerview extends StatefulWidget {
   const Registerview({super.key});
@@ -212,6 +213,14 @@ class _RegisterviewState extends State<Registerview> {
                           shape: const RoundedRectangleBorder()),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          Registeradd().addDet(
+                              firstname: _firstNameController.text,
+                              lastname: _lastNameController.text,
+                              classname: _classController.text,
+                              age: _ageController.text,
+                              email: _emailController.text,
+                              password: _passwordController.text);
+
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Registration Successful'),

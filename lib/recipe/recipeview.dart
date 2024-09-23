@@ -14,10 +14,6 @@ class _RecipeDatState extends State<RecipeDat> {
   final TextEditingController _description = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  String? recipename;
-  String? ingredients;
-  String? description;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +42,6 @@ class _RecipeDatState extends State<RecipeDat> {
                   }
                   return null;
                 },
-                onChanged: (value) {
-                  setState(() {
-                    recipename = value;
-                  });
-                },
               ),
               const SizedBox(height: 20),
               TextFormField(
@@ -66,11 +57,6 @@ class _RecipeDatState extends State<RecipeDat> {
                     return 'Please enter ingredient name';
                   }
                   return null;
-                },
-                onChanged: (value) {
-                  setState(() {
-                    ingredients = value;
-                  });
                 },
               ),
               const SizedBox(height: 20),
@@ -90,11 +76,6 @@ class _RecipeDatState extends State<RecipeDat> {
                   }
                   return null;
                 },
-                onChanged: (value) {
-                  setState(() {
-                    description = value;
-                  });
-                },
               ),
               const SizedBox(height: 40),
               ElevatedButton(
@@ -102,13 +83,11 @@ class _RecipeDatState extends State<RecipeDat> {
                     backgroundColor: Colors.white,
                     shape: const RoundedRectangleBorder()),
                 onPressed: () {
-                  Recipeadd().addRecipe(
-                      recipename: _recipename.text,
-                      ingredients: _ingredientsname.text,
-                      description: _description.text);
-                  if (recipename != null &&
-                      ingredients != null &&
-                      description != null) {
+                  if (_formKey.currentState!.validate()) {
+                    Recipeadd().addRecipe(
+                        recipename: _recipename.text,
+                        ingredients: _ingredientsname.text,
+                        description: _description.text);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                           content: Text(

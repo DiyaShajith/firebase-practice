@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_with_firebase/recipe/recipeview.dart';
+import 'package:todo_with_firebase/registerform/registerview.dart';
 import 'package:todo_with_firebase/view/todo_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple, brightness: Brightness.dark),
         useMaterial3: true,
       ),
-      home:  RecipeDat(),
+      home:  Registerview(),
     );
   }
 }
