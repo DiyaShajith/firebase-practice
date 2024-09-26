@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_with_firebase/book/bookview.dart';
 import 'package:todo_with_firebase/employeeform/emp.dart';
 import 'package:todo_with_firebase/movie/movieview.dart';
 import 'package:todo_with_firebase/recipe/recipeview.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple, brightness: Brightness.dark),
         useMaterial3: true,
       ),
-      home: const MovieView(),
+      home: const BookView(),
     );
   }
 }

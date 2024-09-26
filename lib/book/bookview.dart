@@ -1,28 +1,29 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_with_firebase/book/bookadd.dart';
 import 'package:todo_with_firebase/employeeform/empadd.dart';
 import 'package:todo_with_firebase/movie/movieadd.dart';
 
-class MovieView extends StatefulWidget {
-  const MovieView({super.key});
+class BookView extends StatefulWidget {
+  const BookView({super.key});
 
   @override
-  State<MovieView> createState() => _MovieViewState();
+  State<BookView> createState() => _BookViewState();
 }
 
-class _MovieViewState extends State<MovieView> {
+class _BookViewState extends State<BookView> {
   final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _directorController = TextEditingController();
-  final TextEditingController _yearController = TextEditingController();
-  final TextEditingController _ratingController = TextEditingController();
+  final TextEditingController _authorController = TextEditingController();
+  final TextEditingController _genreController = TextEditingController();
+  final TextEditingController _isbnController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     _titleController.dispose();
-    _directorController.dispose();
-    _yearController.dispose();
-    _ratingController.dispose();
+    _authorController.dispose();
+    _genreController.dispose();
+    _isbnController.dispose();
 
     super.dispose();
   }
@@ -32,7 +33,7 @@ class _MovieViewState extends State<MovieView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Movie Details",
+          "Book Details",
           style: TextStyle(
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
@@ -58,12 +59,12 @@ class _MovieViewState extends State<MovieView> {
                 height: 20,
               ),
               TextFormField(
-                controller: _directorController,
+                controller: _authorController,
                 decoration: const InputDecoration(
-                    label: Text("Director"), border: OutlineInputBorder()),
+                    label: Text("Author"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter director';
+                    return 'Please enter author';
                   }
                   return null;
                 },
@@ -72,12 +73,12 @@ class _MovieViewState extends State<MovieView> {
                 height: 20,
               ),
               TextFormField(
-                controller: _yearController,
+                controller: _genreController,
                 decoration: const InputDecoration(
-                    label: Text("Year"), border: OutlineInputBorder()),
+                    label: Text("Genre"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter year';
+                    return 'Please enter genre';
                   }
                   return null;
                 },
@@ -86,12 +87,12 @@ class _MovieViewState extends State<MovieView> {
                 height: 20,
               ),
               TextFormField(
-                controller: _ratingController,
+                controller: _isbnController,
                 decoration: const InputDecoration(
-                    label: Text("Rating"), border: OutlineInputBorder()),
+                    label: Text("ISBN"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the rating';
+                    return 'Please enter the isbn';
                   }
                   return null;
                 },
@@ -105,11 +106,11 @@ class _MovieViewState extends State<MovieView> {
                     shape: const RoundedRectangleBorder()),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Movieadd().addMovie(
+                    Bookadd().addBook(
                       title: _titleController.text,
-                      director: _directorController.text,
-                      year: _yearController.text,
-                      rating: _ratingController.text,
+                      author: _authorController.text,
+                      genre: _genreController.text,
+                      isbn: _isbnController.text,
                     );
 
                     ScaffoldMessenger.of(context).showSnackBar(
