@@ -3,27 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:todo_with_firebase/employeeform/empadd.dart';
 import 'package:todo_with_firebase/event/eventadd.dart';
 import 'package:todo_with_firebase/movie/movieadd.dart';
+import 'package:todo_with_firebase/product/productadd.dart';
 
-class EventView extends StatefulWidget {
-  const EventView({super.key});
+class ProductView extends StatefulWidget {
+  const ProductView({super.key});
 
   @override
-  State<EventView> createState() => _EventViewState();
+  State<ProductView> createState() => _ProductViewState();
 }
 
-class _EventViewState extends State<EventView> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _dateController = TextEditingController();
-  final TextEditingController _locationController = TextEditingController();
+class _ProductViewState extends State<ProductView> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _categoryController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
+  final TextEditingController _stockController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
-    _dateController.dispose();
-    _locationController.dispose();
+    _nameController.dispose();
+    _categoryController.dispose();
+    _priceController.dispose();
+    _stockController.dispose();
 
     super.dispose();
   }
@@ -33,7 +34,7 @@ class _EventViewState extends State<EventView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Event Details",
+          "Product Details",
           style: TextStyle(
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
@@ -45,12 +46,12 @@ class _EventViewState extends State<EventView> {
           child: Column(
             children: [
               TextFormField(
-                controller: _titleController,
+                controller: _nameController,
                 decoration: const InputDecoration(
-                    label: Text("Title"), border: OutlineInputBorder()),
+                    label: Text("Name"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter title';
+                    return 'Please enter name';
                   }
                   return null;
                 },
@@ -59,12 +60,12 @@ class _EventViewState extends State<EventView> {
                 height: 20,
               ),
               TextFormField(
-                controller: _descriptionController,
+                controller: _categoryController,
                 decoration: const InputDecoration(
-                    label: Text("Description"), border: OutlineInputBorder()),
+                    label: Text("Category"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter description';
+                    return 'Please enter Category';
                   }
                   return null;
                 },
@@ -73,12 +74,12 @@ class _EventViewState extends State<EventView> {
                 height: 20,
               ),
               TextFormField(
-                controller: _dateController,
+                controller:_priceController,
                 decoration: const InputDecoration(
-                    label: Text("Date"), border: OutlineInputBorder()),
+                    label: Text("Price"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter date';
+                    return 'Please enter price';
                   }
                   return null;
                 },
@@ -87,12 +88,13 @@ class _EventViewState extends State<EventView> {
                 height: 20,
               ),
               TextFormField(
-                controller: _locationController,
+                controller: 
+                _stockController,
                 decoration: const InputDecoration(
-                    label: Text("Location"), border: OutlineInputBorder()),
+                    label: Text("Stock"), border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the location';
+                    return 'Please enter the stock';
                   }
                   return null;
                 },
@@ -106,11 +108,11 @@ class _EventViewState extends State<EventView> {
                     shape: const RoundedRectangleBorder()),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Eventadd().addEvent(
-                      title: _titleController.text,
-                      description: _descriptionController.text,
-                      date: _dateController.text,
-                      location: _locationController.text,
+                    Productadd().addProduct(
+                      name: _nameController.text,
+                      category: _categoryController.text,
+                      price: _priceController.text,
+                      stock: _stockController.text,
                     );
 
                     ScaffoldMessenger.of(context).showSnackBar(

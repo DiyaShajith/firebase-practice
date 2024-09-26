@@ -5,14 +5,14 @@ class Eventadd {
     required String title,
     required String description,
     required String date,
-    required String loaction,
+    required String location,
   }) async {
     try {
       await FirebaseFirestore.instance.collection("event").add({
         "title": title,
         "description": description,
         "date": date,
-        "location": loaction,
+        "location": location,
       });
       return "success";
     } catch (e) {
