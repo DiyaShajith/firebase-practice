@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_with_firebase/UIwith_cred/loginpage.dart';
+import 'package:todo_with_firebase/UIwith_cred/viewmodel/registermodel.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -96,7 +97,12 @@ class _HomepageState extends State<Homepage> {
                   height: 50,
                   child: ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {}
+                        if (_formKey.currentState!.validate()) {
+                          Registermodel().addReg(
+                              _emailController.text,
+                              _usernameController.text,
+                              _passwordController.text);
+                        }
                       },
                       child: const Text("Register"))),
               const SizedBox(
