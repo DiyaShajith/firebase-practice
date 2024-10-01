@@ -74,7 +74,7 @@ class _ProductViewState extends State<ProductView> {
                 height: 20,
               ),
               TextFormField(
-                controller:_priceController,
+                controller: _priceController,
                 decoration: const InputDecoration(
                     label: Text("Price"), border: OutlineInputBorder()),
                 validator: (value) {
@@ -88,8 +88,7 @@ class _ProductViewState extends State<ProductView> {
                 height: 20,
               ),
               TextFormField(
-                controller: 
-                _stockController,
+                controller: _stockController,
                 decoration: const InputDecoration(
                     label: Text("Stock"), border: OutlineInputBorder()),
                 validator: (value) {
@@ -130,6 +129,12 @@ class _ProductViewState extends State<ProductView> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Productadd().updateproduct();
+        },
+        child: const Text("update"),
       ),
     );
   }

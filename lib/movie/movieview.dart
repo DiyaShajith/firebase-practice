@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_with_firebase/employeeform/empadd.dart';
 import 'package:todo_with_firebase/movie/movieadd.dart';
+import 'package:todo_with_firebase/movie/viewdata.dart';
 
 class MovieView extends StatefulWidget {
   const MovieView({super.key});
@@ -128,6 +129,15 @@ class _MovieViewState extends State<MovieView> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Viewdata()));
+          },
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("View Data"),
+          )),
     );
   }
 }

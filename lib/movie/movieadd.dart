@@ -19,4 +19,21 @@ class Movieadd {
       return "Error adding";
     }
   }
+  Future<String?> updateMovie(
+     String title,
+    
+    String docid,
+  ) async {
+    try {
+      await FirebaseFirestore.instance.collection("movie").doc(docid).update(
+        {
+        "title_name": title,
+        
+      }
+      );
+      return "success";
+    } catch (e) {
+      return "Error adding";
+    }
+  }
 }
