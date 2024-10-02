@@ -1,6 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_with_firebase/UIwith_cred/Homepage.dart';
+import 'package:todo_with_firebase/UIwith_cred/registerview.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -96,7 +95,7 @@ class _LoginpageState extends State<Loginpage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Homepage()));
+                                  builder: (context) => const RegisterView()));
                         },
                         child: const Text(
                           "Register",

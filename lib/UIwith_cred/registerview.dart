@@ -1,16 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_with_firebase/UIwith_cred/loginpage.dart';
 import 'package:todo_with_firebase/UIwith_cred/viewmodel/registermodel.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -98,10 +97,12 @@ class _HomepageState extends State<Homepage> {
                   child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Registermodel().addReg(
-                              _emailController.text,
-                              _usernameController.text,
-                              _passwordController.text);
+                          // Registermodel().addReg(
+                          //     _emailController.text,
+                          //     _usernameController.text,
+                          //     _passwordController.text);
+                          Registermodel().register(_emailController.text,
+                              _passwordController.text, context);
                         }
                       },
                       child: const Text("Register"))),
