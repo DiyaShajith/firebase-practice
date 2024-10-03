@@ -114,7 +114,7 @@ class _RegisterViewState extends State<RegisterView> {
               SignInButton(
                 Buttons.google,
                 onPressed: () {
-                  Signinwithgoogle().googlesignin();
+                  Signinwithgoogle().googlesignin(); 
                 },
               ),
               const SizedBox(
