@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 import 'package:todo_with_firebase/UIwith_cred/loginpage.dart';
 import 'package:todo_with_firebase/UIwith_cred/viewmodel/registermodel.dart';
+import 'package:todo_with_firebase/UIwith_cred/viewmodel/signinwithgoogle.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -106,6 +108,15 @@ class _RegisterViewState extends State<RegisterView> {
                         }
                       },
                       child: const Text("Register"))),
+              SizedBox(
+                height: 20,
+              ),
+              SignInButton(
+                Buttons.google,
+                onPressed: () {
+                  Signinwithgoogle().googlesignin();
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),

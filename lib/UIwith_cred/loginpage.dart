@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_with_firebase/UIwith_cred/loginmodel.dart';
 import 'package:todo_with_firebase/UIwith_cred/registerview.dart';
 
 class Loginpage extends StatefulWidget {
@@ -9,7 +10,7 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isobsecure = true;
@@ -34,14 +35,14 @@ class _LoginpageState extends State<Loginpage> {
                   height: 20,
                 ),
                 TextFormField(
-                    controller: _usernameController,
+                    controller: _emailController,
                     decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        label: Text("Username",
-                            style: theme.textTheme.labelLarge)),
+                        label:
+                            Text("email", style: theme.textTheme.labelLarge)),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "please enter the username";
+                        return "please enter the email";
                       }
                       return null;
                     }),
@@ -78,7 +79,10 @@ class _LoginpageState extends State<Loginpage> {
                     height: 50,
                     child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+                            Loginmodel().login(_emailController.text,
+                                _passwordController.text, context);
+                          }
                         },
                         child: const Text("Login"))),
                 const SizedBox(
