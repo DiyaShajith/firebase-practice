@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:todo_with_firebase/UIwith_cred/loginpage.dart';
 import 'package:todo_with_firebase/UIwith_cred/viewmodel/registermodel.dart';
@@ -17,6 +22,7 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isobsecure = true;
+  File? image;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +41,33 @@ class _RegisterViewState extends State<RegisterView> {
           key: _formKey,
           child: Column(
             children: [
+              InkWell(
+                onTap: () async {
+                  final pickedimage = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  if (image == null) return;
+                  final imageTemp = File(pickedimage!.path);
+                  setState(() => image = imageTemp);
+                },
+                child: AvatarGlow(
+                  child: Material(
+                    // Replace this child with your own
+                    elevation: 8.0,
+                    shape: CircleBorder(),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey[100],
+                      radius: 30.0,
+                      backgroundImage: image != null
+                          ? FileImage(image!)
+                          : NetworkImage(
+                              "https://static.vecteezy.com/system/resources/previews/042/332/098/non_2x/default-avatar-profile-icon-grey-photo-placeholder-female-no-photo-images-for-unfilled-user-profile-greyscale-illustration-for-socail-media-web-vector.jpg"),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -114,7 +147,7 @@ class _RegisterViewState extends State<RegisterView> {
               SignInButton(
                 Buttons.google,
                 onPressed: () {
-                  Signinwithgoogle().googlesignin(); 
+                  Signinwithgoogle().googlesignin();
                 },
               ),
               const SizedBox(
