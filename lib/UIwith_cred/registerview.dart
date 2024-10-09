@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:todo_with_firebase/UIwith_cred/loginpage.dart';

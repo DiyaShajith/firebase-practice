@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_with_firebase/UIwith_cred/loginpage.dart';
+import 'package:todo_with_firebase/UIwith_cred/otp_verification.dart';
 import 'package:todo_with_firebase/UIwith_cred/registerview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -22,10 +24,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple, brightness: Brightness.dark),
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
+        ),
         useMaterial3: true,
       ),
-      home: const RegisterView(),
+      home: const Loginpage(),
     );
   }
 }

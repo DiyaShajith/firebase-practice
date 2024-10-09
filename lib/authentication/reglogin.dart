@@ -4,6 +4,7 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -47,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: () {
                 print(
-                    'Email: ${_emailController.text}, Password: ${_passwordController.text}');
+                    'Email: ${_emailController.text}, Password: ${_passwordController.text}',);
               },
               child: const Text('Login'),
             ),

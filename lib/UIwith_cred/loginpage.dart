@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_with_firebase/UIwith_cred/loginmodel.dart';
+import 'package:todo_with_firebase/UIwith_cred/otp_verification.dart';
 import 'package:todo_with_firebase/UIwith_cred/registerview.dart';
 
 class Loginpage extends StatefulWidget {
@@ -12,6 +13,7 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isobsecure = true;
   @override
@@ -39,7 +41,7 @@ class _LoginpageState extends State<Loginpage> {
                     decoration: InputDecoration(
                         border: const OutlineInputBorder(),
                         label:
-                            Text("email", style: theme.textTheme.labelLarge)),
+                            Text("Email", style: theme.textTheme.labelLarge)),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "please enter the email";
@@ -63,11 +65,26 @@ class _LoginpageState extends State<Loginpage> {
                                 ? Icons.visibility_off
                                 : Icons.visibility_outlined)),
                         border: const OutlineInputBorder(),
-                        label: Text("password",
+                        label: Text("Password",
                             style: theme.textTheme.labelLarge)),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "please enter the password";
+                      }
+                      return null;
+                    }),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                    controller: _phoneController,
+                    decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        label: Text("Phone number",
+                            style: theme.textTheme.labelLarge)),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "please enter the number";
                       }
                       return null;
                     }),
@@ -80,11 +97,29 @@ class _LoginpageState extends State<Loginpage> {
                     child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            Loginmodel().login(_emailController.text,
-                                _passwordController.text, context);
+                            Loginmodel().login(
+                                _emailController.text,
+                                _passwordController.text,
+                                _phoneController.text,
+                                context);
                           }
                         },
                         child: const Text("Login"))),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OtpVerification()));
+                      },
+                      child: Text("Log in with Mobile Number")),
+                ),
                 const SizedBox(
                   height: 20,
                 ),

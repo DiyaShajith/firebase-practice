@@ -5,6 +5,7 @@ class Loginmodel {
   Future login(
     String email,
     String password,
+    String phone,
     BuildContext context,
   ) async {
     try {
